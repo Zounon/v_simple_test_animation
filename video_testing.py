@@ -12,10 +12,14 @@ no_dark_colours = True
 # to FPS. So higher FPS means faster moving boxes and faster changing colours 
 FPS = 30
 
+# Timer shows hours:min:seconds, set to True to also include nanoseconds
+# Credit to Marson W for creating this feature
+include_nanoseconds = True
+
 # Custom screen size, set to True if desired otherwise will detect fullscreen resolution
-use_custom_size = True 
-HEIGHT = 1080/2 
-WIDTH = 1920/2 
+use_custom_size = False 
+HEIGHT = 1080//2 
+WIDTH = 1920//2 
 FONT_SIZE = 180
 BOX_WIDTH = 100
 BOX_HEIGHT = 200 
@@ -49,6 +53,8 @@ r, g, b = 0, 0, 0
 r_mod, g_mod, b_mod = 1/2, 3/2, 1
 
 current_time = time.strftime("%H:%M:%S", time.localtime())
+if include_nanoseconds:
+    current_time = str(current_time) + ':' + str(time.time_ns())[10:13]
 time_text = font.render(str(current_time), True, (255, 255, 255), (0, 0, 0))
 text_box_pos = (WIDTH//2 - time_text.get_size()[0]//2, HEIGHT_1_3)
 first_box_pos = HEIGHT_1_3 + time_text.get_size()[1]
@@ -94,7 +100,10 @@ def update_colour():
 
 while True:
     clock.tick(FPS)
+
     current_time = time.strftime("%H:%M:%S", time.localtime())
+    if include_nanoseconds:
+        current_time = str(current_time) + ':' + str(time.time_ns())[10:13]
     time_text = font.render(str(current_time), True, (255, 255, 255), (0, 0, 0))
     
     pygame.event.pump()
