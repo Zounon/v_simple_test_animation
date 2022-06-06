@@ -4,7 +4,7 @@ a very simple animation to play while testing recording devices.
 ### Running the script.
 Requires pygame to run, type  ``` pip install pygame ``` in a cmd to install pygame. 
 
-To run the script simply type ``` python .\path\to\script\v_simple_test_animation.py ```
+To run the script simply type ``` python .\path\to\script\video_testing.py ```
 
 To quit press `q` or `ctrl + c` 
 
